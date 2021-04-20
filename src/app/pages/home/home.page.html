@@ -9,10 +9,9 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="ion-padding">debugger</div>
   <ion-list>
-    <ion-item *ngFor="let item of items; let i = index;">
-      {{item.content}}
+    <ion-item *ngFor="let item of items; let i = index;" color="light">
+      <b>{{item}}</b>
     </ion-item>
   </ion-list>
 

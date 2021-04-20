@@ -34,11 +34,34 @@ export class HomePage implements OnInit {
     .from('supascript_log')
     .on('INSERT', payload => {
       console.log('Change received!', payload)
-      this.items.unshift(payload.new);
+      console.log('payload.new.content', payload.new.content);
+      const itemArr = [payload.new.log_type];
+      for (let i=0; i < payload.new.content.length; i++) {
+        const item = payload.new.content[i];
+        if (typeof item === 'object') {
+          itemArr.push(JSON.stringify(item));
+        } else {
+          itemArr.push(item);
+        }
+      };
+      console.log('itemArr', itemArr);
+      this.items.unshift(itemArr);
     })
     .subscribe();
     
 
+  }
+
+  async login(email, password) {
+    const { user, session, error } = await this.supabase.auth.signIn({
+      email: email,
+      password: password,
+    });
+    if (error) {
+      console.error('login error', error);
+    } else {
+      console.log('login successful', user);
+    }
   }
 
 }

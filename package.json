@@ -1,8 +1,8 @@
 {
   "name": "SupaScriptDebugger",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Mark Burggraf <markb@dmarie.com>",
+  "homepage": "https://supabase.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
