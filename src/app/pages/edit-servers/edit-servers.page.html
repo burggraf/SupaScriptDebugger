@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Edit Servers List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-padding">
+
+    <ion-list>
+      <ion-list-header color="medium" lines="full">
+        <ion-label class="">Server Detail</ion-label>
+        <ion-button 
+          fill="solid" 
+          color="dark" 
+          (click)="add()">Add</ion-button>
+        &nbsp;&nbsp;
+        <ion-button 
+          fill="solid" 
+          color="dark" 
+          (click)="delete()">Delete</ion-button>
+        &nbsp;&nbsp;
+        <ion-button 
+          fill="solid" 
+          color="dark" 
+          (click)="save()"
+          [disabled]="!serverValid()">Save</ion-button>
+        &nbsp;&nbsp;
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="fixed">Server Name</ion-label>
+        <ion-input class="inputBox" placeholder="enter server name" [(ngModel)]="server.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Server URL</ion-label>
+        <ion-input class="inputBox" placeholder="enter server url" [(ngModel)]="server.url"></ion-input>  
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Anon Key</ion-label>
+        <ion-input class="inputBox" placeholder="enter anonymous key" [(ngModel)]="server.key"></ion-input>  
+      </ion-item>  
+    </ion-list>
+
+
+  <ion-list>
+    <ion-list-header color="medium" lines="full">
+      <ion-label class="">Server List</ion-label>
+    </ion-list-header>
+  <ion-item *ngFor="let server of servers; let i = index;" lines="full" (click)="selectServer(i)">
+      <span [style.fontWeight]="selectedIndex === i ? 'bold' : 'normal'">{{ server.name }}</span>
+    </ion-item>
+  </ion-list>
+
+</div>
+
+</ion-content>
